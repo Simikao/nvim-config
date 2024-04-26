@@ -330,6 +330,20 @@ require('lazy').setup({
       vim.keymap.set('n', 'ZC', '<cmd>AsyncStop<cr>')
     end,
   },
+  {
+    'nvimtools/none-ls.nvim',
+    dependencies = {
+      'nvimtools/none-ls-extras.nvim',
+    },
+    config = function()
+      local nls = require 'null-ls'
+      nls.setup {
+        sources = {
+          require 'none-ls.diagnostics.eslint_d',
+        },
+      }
+    end,
+  },
   -- NOTE: Plugins can also be configured to run Lua code when they are loaded.
   --
   -- This is often very useful to both group configuration, as well as handle
@@ -904,5 +918,6 @@ end, {
 })
 vim.keymap.set('n', '<c-Space>', '<cmd>Terminal<cr>', { desc = 'open terminal' })
 vim.opt.pumheight = 4
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
