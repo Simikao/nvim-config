@@ -330,6 +330,29 @@ require('lazy').setup({
       vim.keymap.set('n', 'ZC', '<cmd>AsyncStop<cr>')
     end,
   },
+  -- { 'github/copilot.vim' },
+  {
+    'zbirenbaum/copilot.lua',
+    config = function()
+      local copilot = require 'copilot'
+      copilot.setup {
+        panel = {
+          enabled = false,
+        },
+        suggestion = {
+          auto_trigger = false,
+          keymap = {
+            accept = '<M-y>',
+            accept_word = false,
+            accept_line = '<M-l>',
+            next = '<M-n>',
+            prev = '<M-p>',
+            dismiss = '<M-e>',
+          },
+        },
+      }
+    end,
+  },
   {
     'nvimtools/none-ls.nvim',
     dependencies = {
@@ -917,6 +940,9 @@ end, {
   count = 12,
 })
 vim.keymap.set('n', '<c-Space>', '<cmd>Terminal<cr>', { desc = 'open terminal' })
+-- vim.keymap.set('n', '<leader>ce', '<cmd>Copilot enable<cr>', { desc = 'enalbe' })
+-- vim.keymap.set('n', '<leader>cd', '<cmd>Copilot disable<cr>', { desc = 'disable' })
+vim.keymap.set('n', '<leader>cc', require('copilot.suggestion').toggle_auto_trigger, { desc = 'toggle' })
 vim.opt.pumheight = 4
 
 -- The line beneath this is called `modeline`. See `:help modeline`
