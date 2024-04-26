@@ -269,6 +269,7 @@ vim.keymap.set('n', '<c-Space>', '<cmd>Terminal<cr>', { desc = 'open terminal' }
 -- vim.keymap.set('n', '<leader>cd', '<cmd>Copilot disable<cr>', { desc = 'disable' })
 vim.keymap.set('n', '<leader>cc', require('copilot.suggestion').toggle_auto_trigger, { desc = 'toggle' })
 vim.opt.pumheight = 4
+vim.opt.lbr = true
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
