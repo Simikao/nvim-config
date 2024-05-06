@@ -463,15 +463,21 @@ return {
           end
           return 'make install_jsregexp'
         end)(),
+        config = function(_, opts)
+          local ls = require 'luasnip'
+          ls.setup(opts)
+          require('luasnip.loaders.from_lua').lazy_load { paths = './lua/simi/snippets' }
+        end,
         dependencies = {
+          -- require('luasnip.loaders.from_lua').lazy_load { paths = './lua/cathy/snippets' },
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
           -- {
           --   'rafamadriz/friendly-snippets',
-          --   config = function()
+          -- config = function()
           --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
+          -- end,
           -- },
         },
       },
