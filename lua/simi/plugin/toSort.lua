@@ -129,14 +129,11 @@ return {
   },
   {
     'nvimtools/none-ls.nvim',
-    dependencies = {
-      'nvimtools/none-ls-extras.nvim',
-    },
     config = function()
       local nls = require 'null-ls'
       nls.setup {
         sources = {
-          require 'none-ls.diagnostics.eslint_d',
+
         },
       }
     end,
