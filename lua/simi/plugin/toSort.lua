@@ -133,7 +133,13 @@ return {
       local nls = require 'null-ls'
       nls.setup {
         sources = {
+          nls.builtins.formatting.black,
+          nls.builtins.formatting.gofumpt,
+          nls.builtins.formatting.prettier,
+          nls.builtins.formatting.stylua,
 
+          nls.builtins.diagnostics.golangci_lint,
+          nls.builtins.diagnostics.stylelint,
         },
       }
     end,
