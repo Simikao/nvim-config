@@ -271,5 +271,31 @@ vim.keymap.set('n', '<leader>cc', require('copilot.suggestion').toggle_auto_trig
 vim.opt.pumheight = 4
 vim.opt.lbr = true
 
+-- Opening lazygit in vim
+local function lazygit()
+  vim.api.nvim_open_win(0, true, {
+    relative = 'editor',
+    width = vim.opt.columns:get() - 10,
+    height = vim.opt.lines:get() - 5,
+    col = 5,
+    row = 1,
+    anchor = 'NW',
+    border = 'single',
+  })
+
+  vim.cmd 'terminal lazygit'
+  vim.cmd 'startinsert'
+  local buf = vim.api.nvim_get_current_buf()
+
+  vim.api.nvim_buf_set_name(buf, 'LazyGit')
+  vim.api.nvim_create_autocmd('TermClose', {
+    once = true,
+    buffer = buf,
+    command = 'bd!',
+  })
+end
+
+vim.keymap.set('n', '<leader>gg', lazygit)
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
