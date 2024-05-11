@@ -283,6 +283,17 @@ local function lazygit()
     border = 'single',
   })
 
+  vim.api.nvim_create_autocmd('TermOpen', {
+    once = true,
+    callback = function()
+      vim.opt_local.number = false
+      vim.opt_local.relativenumber = false
+      vim.opt_local.spell = false
+      vim.opt_local.signcolumn = 'no'
+      vim.opt_local.scrolloff = 0
+    end,
+  })
+
   vim.cmd 'terminal lazygit'
   vim.cmd 'startinsert'
   local buf = vim.api.nvim_get_current_buf()
@@ -295,6 +306,7 @@ local function lazygit()
   })
 end
 
+vim.keymap.set('n', '<leader>gg', lazygit)
 vim.keymap.set('n', '<leader>gg', lazygit)
 
 -- The line beneath this is called `modeline`. See `:help modeline`
