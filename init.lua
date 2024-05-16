@@ -309,5 +309,8 @@ end
 vim.keymap.set('n', '<leader>gg', lazygit)
 vim.keymap.set('n', '<leader>gg', lazygit)
 
+vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+  border = 'rounded',
+})
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
