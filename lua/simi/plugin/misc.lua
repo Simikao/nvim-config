@@ -65,4 +65,54 @@ return {
       vim.keymap.set('n', '<leader>v', toggle_venn)
     end,
   },
+  {
+    'jake-stewart/multicursor.nvim',
+    branch = '1.0',
+    config = function()
+      local mc = require 'multicursor-nvim'
+      mc.setup()
+
+      vim.keymap.set('n', '<c-n>', function()
+        mc.addCursor '*'
+      end)
+      vim.keymap.set('n', '<c-p>', function()
+        mc.addCursor '#'
+      end)
+      vim.keymap.set('n', '<c-s>', function()
+        mc.skipCursor '*'
+      end)
+      vim.keymap.set('n', '<c-S>', function()
+        mc.skipCursor '#'
+      end)
+      vim.keymap.set('v', '<c-n>', function()
+        mc.addCursor '*'
+      end)
+      vim.keymap.set('v', '<c-p>', function()
+        mc.addCursor '#'
+      end)
+      vim.keymap.set('v', '<c-s>', function()
+        mc.skipCursor '#'
+      end)
+      vim.keymap.set('v', '<c-S>', function()
+        mc.skipCursor '*'
+      end)
+      vim.keymap.set('n', '<leader>gv', mc.restoreCursors)
+
+      vim.keymap.set('v', '<c-q>', mc.visualToCursors)
+      vim.keymap.set('v', 'm', mc.matchCursors)
+      vim.keymap.set('v', 'M', mc.splitCursors)
+
+      vim.keymap.set('n', 'ga', mc.alignCursors)
+      vim.keymap.set('v', 'I', mc.insertVisual)
+      vim.keymap.set('v', 'A', mc.appendVisual)
+
+      vim.keymap.set('n', '<esc>', function()
+        if mc.hasCursors() then
+          mc.clearCursors()
+        else
+          vim.cmd 'nohlsearch'
+        end
+      end)
+    end,
+  },
 }
