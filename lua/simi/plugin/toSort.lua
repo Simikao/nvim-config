@@ -100,10 +100,10 @@ return {
 
       vim.keymap.set('n', 'Zd', function()
         run_wrap(false)
-      end, { silent = false })
+      end, { silent = false, desc = 'Run last command' })
       vim.keymap.set('n', 'ZD', function()
         run_wrap(true)
-      end, { silent = false })
+      end, { silent = false, desc = 'Run new command' })
       vim.keymap.set('n', 'ZC', '<cmd>AsyncStop<cr>')
     end,
   },
