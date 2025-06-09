@@ -314,3 +314,17 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 })
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
+
+if vim.g.neovide then
+  vim.g.neovide_scale_factor = 1.0
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_refresh_rate = 144
+  vim.g.neovide_cursor_vfx_mode = ''
+  vim.g.neovide_fullscreen = true
+  vim.g.neovide_floating_shadow = false
+  vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_cursor_trail_size = 0.2
+  vim.g.neovide_cursor_animate_command_line = false
+  vim.g.neovide_scroll_animation_length = 0
+  vim.g.neovide_position_animation_length = 0
+end
